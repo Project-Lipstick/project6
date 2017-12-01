@@ -11,27 +11,20 @@ class Profile extends React.Component {
     constructor() {
         super();
         this.state = {
-            // loggedIn: false,
-            // userKey: "",
             twitter: "",
             instagram: "",
             note: "",
             imageUrl: ""
         }
-        // this.login = this.login.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        
+        this.handleClick = this.handleClick.bind(this);       
     }
     
     componentDidMount() {
         var dbRef = firebase.database().ref();
 
         dbRef.on('value', (snapshot) => {
-            // console.log(data.val());
             const newState=[];
             const data = snapshot.val();
-
-            // console.log(data);
 
             for (let key in data) {
                 let newTwitter = data[`twitter`];
@@ -39,10 +32,6 @@ class Profile extends React.Component {
                 let newInstagram = data[`instagram`];
                 let newImageUrl = data[`imageUrl`]
 
-                // console.log(newTwitter)
-                // console.log(key)
-                // console.log(data[key])
-                // newState.push(data[key])
                 this.setState({
                     twitter: newTwitter,
                     instagram: newInstagram,
@@ -58,14 +47,10 @@ class Profile extends React.Component {
         console.log('clicked');
         e.preventDefault();
 
-        // console.log(this.twitter.value)
-
         const newTwitter = this.twitter.value;
         const newInstagram = this.instagram.value;
         const newNote = this.note.value
         const dbRef = firebase.database().ref();
-
-
 
         this.setState({
             twitter: newTwitter,
@@ -88,9 +73,6 @@ class Profile extends React.Component {
                             imageUrl: result,
                         });
                         dbRef.update({
-                            // twitter: newTwitter,
-                            // instagram: newInstagram,
-                            // note: newNote,
                             imageUrl: this.state.imageUrl,
                         })
                     }.bind(this));

@@ -72,14 +72,4 @@ class ProfileView extends React.Component{
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 export default ProfileView

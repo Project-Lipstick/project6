@@ -17,18 +17,6 @@ class Dashboard extends React.Component {
             userName: this.props.userName,
 
         });
-
-        // // console.log(this.state.userKey);
-        // const userRef = firebase.database().ref().push(`${this.state.userKey}`);
-        // // .set(`${this.state.userKey}`);
-
-        // console.log(this.state.userKey);
-
-        // let song = {
-        //     date: this.state.currentDate,
-        //     lyrics: this.state.currentLyrics
-        // }
-        // firebase.database().ref(`${this.state.currentGenre}/${this.state.currentTitle}`).set(song);
     }
     render() {
         return (
