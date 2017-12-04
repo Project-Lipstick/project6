@@ -9,17 +9,25 @@ class AdminView extends React.Component{
         this.state = {
             currentItems: [],
             active: false,
+            showColors: false,
             testColor: "",
+            note: "",
+            instagram: "",
+            twitter: "",
+            imageUrl: "",
         }
         this.removeItem = this.removeItem.bind(this);
         this.toggleClass = this.toggleClass.bind(this);
         this.addPublic = this.addPublic.bind(this);
         this.removePublic = this.removePublic.bind(this);
+        this.showColors = this.showColors.bind(this);
     }
+    
+
     componentDidMount(){
-        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
+        const itemRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
         const userItems = [];
-        dbRef.once("value", (res) => {
+        itemRef.once("value", (res) => {
             const data = res.val();
             for (let key in data) {
                 const value = data[key];
@@ -27,6 +35,19 @@ class AdminView extends React.Component{
             }
             this.setState({
                 currentItems: userItems,
+            })
+        })
+
+        const infoRef = firebase.database().ref(`${this.props.userkey}`);
+        const userInfo = [];
+        infoRef.on("value", (res) => {
+            const data = res.val();
+            userInfo.push(res);
+            this.setState({
+                instagram: data.instagram,
+                twitter: data.twitter,
+                note: data.note,
+                imageUrl: data.imageUrl,
             })
         })
     }
@@ -77,6 +98,11 @@ class AdminView extends React.Component{
         })
     }
 
+    showColors(e){
+        e.preventDefault();
+        this.setState({ showColors: !this.state.showColors });
+    }
+
 
     render() {
         const divStyle = {
@@ -85,10 +111,23 @@ class AdminView extends React.Component{
             height: "50px",
         }
         return (
-            <div>
+            <section className="adminContainer">
+                <h2 className="sectionHeading">Dashboard</h2>
                 <div>
                     <div>
-                        <EditingBox />
+                        <div className="userDetails">
+                            <div className="imgContainer">
+                                <img src={this.state.imageUrl} alt=""/>
+                            </div>
+                            <div className="userContent">
+                                <p className="bodyContent">{this.state.note}</p>
+                            </div>
+                            <div className="contentEdit">
+                                <p className="bodyContent">Click to edit your information!</p>
+                                <EditingBox
+                                    userkey={this.props.userkey} />
+                            </div>
+                        </div>
                         <p>{this.state.note}</p>
                         <a href={`${this.state.twitter}`}>
                             <i className="fa fa-twitter" aria-hidden="true"></i>
@@ -112,13 +151,17 @@ class AdminView extends React.Component{
                         )
                     })}
                 </div>
+                <p onClick={this.showColors}>Show Colors</p>
+                {this.state.showColors ?
                 <div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption3")}></div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption4")}></div>
+                    <p>Click to change accent color on your public page</p>
                 </div>
-            </div>
+                    : null}
+            </section>
         )
     }
 }

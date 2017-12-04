@@ -19,7 +19,7 @@ class Form extends React.Component {
     }
     
     componentDidMount() {
-        const dbRef = firebase.database().ref(`${this.props.userKey}`);
+        const dbRef = firebase.database().ref(`${this.props.userkey}`);
 
         dbRef.on('value', (snapshot) => {
             const newState=[];
@@ -47,7 +47,7 @@ class Form extends React.Component {
         const newTwitter = this.twitter.value;
         const newInstagram = this.instagram.value;
         const newNote = this.note.value
-        const dbRef = firebase.database().ref(`${this.props.userKey}`);
+        const dbRef = firebase.database().ref(`${this.props.userkey}`);
 
         this.setState({
             twitter: newTwitter,
@@ -104,7 +104,7 @@ class Form extends React.Component {
                     </div>
                     <input className="submit" type="submit" value="Add" />
                 </form>  
-                <div>
+                {/* <div>
                     <img src={`${this.state.imageUrl}`} alt=""/>
                     <p>{this.state.note}</p>
                     <a href={`https://twitter.com/${this.state.twitter}`}>
@@ -113,7 +113,7 @@ class Form extends React.Component {
                     <a href={`https://www.instagram.com/${this.state.instagram}`}>
                         <i className="fa fa-instagram" aria-hidden="true"></i>
                     </a>                
-                </div>
+                </div> */}
             </div>
         )
     }

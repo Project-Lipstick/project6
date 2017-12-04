@@ -86,7 +86,7 @@ class TopNav extends React.Component {
     render() {
         return (
             <Router>
-                <div>
+                <div className="wrapper">
                     <ul>
                         <li><Link to={'/AdminView'}>Dashboard</Link></li>
                         <li><Link to={'/SearchForm'}>Search</Link></li>
@@ -97,8 +97,6 @@ class TopNav extends React.Component {
                         <Route exact path="/AdminView" render={props => <AdminView {...props} userkey={this.props.userkey}/>}/>
                         <Route exact path="/SearchForm" render={props => <SearchForm {...props} userkey={this.props.userkey}/>}/>
                         <Route exact path="/PublicPage" render={props => <PublicPage {...props} userkey={this.props.userkey}/>}/>
-                        {/* <Route exact path='/SearchForm' component={SearchForm} />
-                        <Route exact path='/PublicPage' component={PublicPage} /> */}
                     </Switch>
                 </div>
             </Router>
