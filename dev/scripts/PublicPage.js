@@ -75,7 +75,7 @@ render(){
                 </a>
 
                 <div>
-                    <h1 className="publicMakeupTitle">Makeup Shopping Bag</h1>
+                    <h1 className="publicMakeupTitle">My Makeup Bag</h1>
                 </div>
                 {this.state.publicItems.map((items) => {
                     return(

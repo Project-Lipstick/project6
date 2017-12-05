@@ -1,7 +1,7 @@
 .searchPage{
-        margin-top: 2vh;
-        margin-left: 1.75vw;
-       
+    margin-top: 2vh;
+    margin-left: 1.75vw;
+    height: 50vh;
 }
 
 .inputWrapper{
@@ -94,6 +94,28 @@
 
 .visuallyHidden{
     display: none;
+}
+
+.bagAdd{
+    position: absolute;
+    right: 15px;
+    top: -17px;
+    // background: white;
+    padding: 1%;
+    // box-shadow: 0 2.5px 10px rgba(0, 0, 0, .05);
+}
+.bagAdd .fa-plus-square-o:hover{
+    color: #eba78d;
+}
+
+.bagAdd .fa-plus-square-o{
+    font-size: 2.5rem;
+    margin-left: 3px;
+    margin-top: 3px;
+}
+
+.bagContainer .bagItems{
+    height: 425px;
 }
 
 //Styles applying from Public Page

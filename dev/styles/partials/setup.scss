@@ -25,6 +25,10 @@ html{
 .wrapper {
     width: 80%;
     margin: 0 auto;
+
+    @media (max-width : 1024px){
+        width: 90%;
+    }
 }
 /*Color*/
 $nude-color: #eba78d;
@@ -36,7 +40,8 @@ $yellow-color:#dca852;
 
 /*Body*/
 body{
-    background: linear-gradient(90deg, rgba(235, 167, 141, .45), #FFF);
+    // background: linear-gradient(45deg, rgba(235, 167, 141, .25), #FFF);
+    background: white;
 }
 /* Heading */
 h1, 

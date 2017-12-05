@@ -1,6 +1,16 @@
 /*Dashboard Page*/
 .adminContainer{
     min-height: 100vh;
+    width: 100%;
+}
+
+.userContent .bodyContent {
+    padding-right: 150px;
+}
+
+.mainBagTitle{
+    font-size: 5rem;
+    margin: 100px 0 50px 0;
 }
 
 .bagContainer{
@@ -9,37 +19,36 @@
 
 .bagItems{
     float: left;  
-    width: calc(25% - 20px);
-    margin-bottom: 50px;
-    margin-right: 20px;
-    height: 400px;
+    width: calc(25% - 50px);
+    margin-bottom: 65px;
+    margin-right: 50px;
+    height: 450px;
     position: relative;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 0 20px 0 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
 .bagItems img{
     width: 100%;
     height: 300px;
     display: block;
+    object-fit: cover;
 }
 
 .bagItems p{
     font-size: 1.4rem;
+    line-height: 2rem;
 }
 
-
-.bagContainer h1{
+.bagItems h3{
     margin-bottom: 10px;
     margin-top: 10px;
     text-transform: uppercase;
     font-size: 1.5rem;
 }
 
-.bagContainer p{
-    margin-bottom: 10px;
-}
-
 .bagItems a{
-    margin-right: 10px;
     color: black;
 }
 
@@ -47,14 +56,55 @@
     margin-right: 3px;
 }
 
-.bagLinks{
+.removeFromBag{
     position: absolute;
-    bottom: 0;
+    right: 15px;
+    top: -17px;
+    padding: 1%;
 }
 
-.bagTitle{
-    font-size: 3rem;
-    margin: 30px 0 30px 0;
+.bagLinks{
+    position: absolute;
+    bottom: -28px;
+    left: 15px;
+    background: white;
+    width: 125px;
+    padding: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+.bagTitle h3{
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.fa-minus-square-o{
+    font-size: 2.5rem;
+    margin-left: 3px;
+    margin-top: 3px;
+    transition: 0.25s ease;
+}
+
+.bagRemoveAdd{
+    width: 100%;
+}
+
+.bagRemoveIcons{
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.fa-plus-square-o:hover, .fa-minus-square:hover, .fa-minus-square-o:hover{
+    color: #eba78d;
+}
+
+.fa-plus-square-o, .fa-minus-square{
+    font-size: 2rem;
+    transition: 0.25s ease;
 }
 
 .sectionHeading{
@@ -73,7 +123,7 @@
 }
 
 .imgContainer img{
-    max-width: 100%;
+    width: 100%;
     height: 500px;
     object-fit: cover;
 }
@@ -87,6 +137,7 @@
     font-size: 2rem;
     line-height: 2.6rem;
     letter-spacing: 0.05rem;
+    margin-bottom: 10px;
 }
 
 .contentEdit{
@@ -166,13 +217,28 @@
     font-size: 3rem;
     color: black;
     margin-top: 20px;
-    margin-right: 15px;
+    margin-right: 50px;
 }
 
+/*Media Queries*/
+@media (max-width : 1024px){
+    .userContent .bodyContent{
+        padding: 0;
+    }
 
+    .imgContainer{
+        width: calc(50% - 30px);
+        margin-right: 30px;
+    }
 
-// const divStyle = {
-//             background: "black",
-//             width: "50px",
-//             height: "50px",
-//         }
+    .userContentContainer{
+        width: 50%;
+    }
+
+    .colors{
+        float: left;
+        // width: calc(25% - 10px);
+        margin: 0;
+        
+    }
+}

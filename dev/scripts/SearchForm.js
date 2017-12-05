@@ -189,9 +189,8 @@ class MakeUpProducts extends React.Component {
                     <img src={this.props.data.image_link} alt="" />
                     <h3>{this.props.data.brand}</h3>
                     <p>{this.props.data.name}</p>
-                    <div className="bagLinks">
-                        <a href="" onClick={this.addItem}><i className="fa fa-plus-square-o" aria-hidden="true"></i>Add to Bag</a> 
-                        <a href={`${this.props.data.product_link}`} target="_blank">Buy Me</a>  
+                    <div className="bagAdd">
+                        <a href="" onClick={this.addItem}><i className="fa fa-plus-square-o" aria-hidden="true"></i></a> 
                     </div> 
                     <p className="visuallyHidden">{this.props.data.id}</p>
                 </div>
