@@ -120,6 +120,7 @@ class AdminView extends React.Component {
                             
                             <div className="userContentContainer">
                                 <div className="userContent">
+                                    <p><span className="bioTitle">Current Bio</span></p>
                                     <p className="bodyContent">{this.state.note}</p>
                                     <a href={`${this.state.twitter}`}>
                                         <i className="fa fa-twitter" aria-hidden="true"></i>
@@ -134,8 +135,8 @@ class AdminView extends React.Component {
                                     <EditingBox
                                         userkey={this.props.userkey} />
 
-                                    <div>
-                                    <p className="editColorTitle" onClick={this.showColors}>Edit Colors</p>
+                                    <div className="colorContainer">
+                                    <p className="editColorTitle" onClick={this.showColors}>Edit Profile Color</p>
                                     {this.state.showColors ?
                                         <div className="colorBoxes">
                                             <div className="colors color1" onClick={(e) => this.toggleColor(e, "userOption1")}></div>
@@ -156,37 +157,33 @@ class AdminView extends React.Component {
 
                     {this.state.currentItems.map((item) => {
                         return (
-                            <div key={item.selectionKey}>
-                                {/* <div className="wrapper"> */}
-                                <div className="bagContainer">
-                                    <div className="bagItems">
-                                        <img src={item.imageUrl} alt="" />
-                                        <h3>{item.brandTitle}</h3>
-                                        <p>{item.productDescription}</p>
-                                        <div className="bagLinksContainer">
-                                            <div className="removeFromBag">
-                                                <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}><i className="fa fa-minus-square-o" aria-hidden="true"></i></a>
+                            <div className="bagContainer" key={item.selectionKey}>
+                                <div className="bagItems">
+                                    <img src={item.imageUrl} alt="" />
+                                    <h3>{item.brandTitle}</h3>
+                                    <p>{item.productDescription}</p>
+                                    <div className="bagLinksContainer">
+                                        <div className="removeFromBag">
+                                            <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}><i className="fa fa-minus-square-o" aria-hidden="true"></i></a>
+                                        </div>
+
+                                        <div className="bagLinks">
+                                            <div className="bagTitle">
+                                                <h3>Public View</h3>
                                             </div>
 
-                                            <div className="bagLinks">
-                                                <div className="bagTitle">
-                                                    <h3>Public View</h3>
+                                            <div className="bagRemoveAdd">
+                                                <div className="bagRemoveIcons addPublic">
+                                                    <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i></a>
                                                 </div>
 
-                                                <div className="bagRemoveAdd">
-                                                    <div className="bagRemoveIcons addPublic">
-                                                        <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i></a>
-                                                    </div>
-
-                                                    <div className="bagRemoveIcons removePublic">
-                                                        <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i></a>
-                                                    </div>
+                                                <div className="bagRemoveIcons removePublic">
+                                                    <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                {/* </div> */}
                             </div>
                         )
                     })}

@@ -6,6 +6,13 @@
 
 .userContent .bodyContent {
     padding-right: 150px;
+    margin-top: 10px;
+}
+
+.bioTitle{
+    text-transform: uppercase;
+    opacity: 0.5;
+    font-size: 1.5rem;
 }
 
 .mainBagTitle{
@@ -33,7 +40,7 @@
     width: 100%;
     height: 300px;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .bagItems p{
@@ -150,38 +157,30 @@
     height: 60px;
 }
 
+.colorContainer{
+    width: 50%;
+    float: left;
+}
+
 .editingBox a, .editColorTitle{
     font-size: 2rem;
-    margin-top: 20px;
     cursor: pointer;
 }
 
 .color1{
     background: #e5bb9e;
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
 }
 
 .color2{
     background: #fac8e2;
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
 }
 
 .color3{
     background: #eba78d;
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
 }
 
 .color4{
     background: #dca852;
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
 }
 
 .colors{
@@ -189,10 +188,14 @@
     margin-right: 10px;
     margin-top: 10px;
     cursor: pointer;
+    height: 50px;
+    border-radius: 50px;
+    width: 50px;
 }
 
 .colorBoxes{
-    right: 0;
+    // width: 100%;
+    position: absolute;
 }
 
 
@@ -221,6 +224,18 @@
 }
 
 /*Media Queries*/
+@media (max-width : 1256px){
+    .bagItems{
+        width: calc(33.33% - 50px);
+        margin-right: 50px;
+    }
+
+    .bagItems:nth-of-type(3n){
+        margin-right: 0;
+        float: right;
+    }
+}
+
 @media (max-width : 1024px){
     .userContent .bodyContent{
         padding: 0;
@@ -234,11 +249,96 @@
     .userContentContainer{
         width: 50%;
     }
+    .editColorTitle{
+        margin-bottom: 15px;
+    }
+
+    .colorBoxes{
+        width: 111px;
+    }
 
     .colors{
+        margin: 5px 0 5px 0; 
+    }
+
+    .color1{
         float: left;
-        // width: calc(25% - 10px);
-        margin: 0;
-        
+    }
+    .color2{
+        float: right;
+    }
+    .color3{
+        float: left;
+    }
+    .color4{
+        float: right;
+    }
+
+    .bagItems{
+        width: calc(33.33% - 50px);
+        margin-right: 50px;
+    }
+}
+
+@media (max-width : 954px){
+    .imgContainer{
+        width: 69%;
+        height: 250px;
+        margin-bottom: 50px;
+    }
+    .imgContainer img{
+        height: 275px;
+    }
+    .userContentContainer{
+        width: 75%;
+    }
+    .mainBagTitle{
+        margin-top: 140px;
+        text-align: center;
+    }
+    .colorBoxes{
+        position: absolute;
+    }
+    .contentEdit{
+        margin-top: 20px;
+    }
+}
+
+@media (max-width : 842px){
+    .bagItems{
+        width: calc(50% - 50px);
+        margin-right: 50px;
+    }
+
+    .bagItems:nth-of-type(even){
+        margin-right: 0;
+        float: right;
+    }
+}
+
+@media (max-width : 566px){
+    .adminContainer .bagContainer .bagItems{
+        width: 80%; 
+        margin: 50px auto 50px auto;
+        float: none;
+    }
+
+    .adminContainer .bagContainer:nth-of-type(even) .bagItems{
+        float: none;
+        margin: 50px auto 50px auto;
+    }
+}
+@media (max-width : 480px){
+    .imgContainer{
+        width: 100%;
+    }
+
+    .userContentContainer{
+        width: 100%;
+    }
+
+    .sectionHeading{
+        font-size: 6rem;
+        text-align: center;
     }
 }

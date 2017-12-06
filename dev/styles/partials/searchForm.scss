@@ -111,7 +111,7 @@
 }
 
 .bagContainer .bagItems{
-    height: 425px;
+    height: 440px;
 }
 
 @media (max-width: 1161px) {
@@ -168,6 +168,13 @@
     }
 }
 
+@media (max-width: 842px) {
+    .bagContainer:nth-of-type(even) .bagItems {
+        margin-right: 0;
+        float: right;
+    }
+}
+
 @media (max-width: 768px) {
     .selectedContainer {
         float: none;
@@ -176,6 +183,14 @@
 
     .searchContainer {
         margin-top: 25%;
+        background: rgba(235, 167, 141, .17);
+    }
+    .searchPage{
+        height: 70vh;
+    }
+
+    .searchSubmitButton{
+        bottom: -4%;
     }
 } 
 
@@ -212,6 +227,18 @@
 @media (max-width: 612px) {
     .searchContainer {
         width: 500px;
+    }
+
+    .bagContainer .bagItems{
+        float: none;
+        width: 80%;
+        margin: 0 auto 50px auto;
+    }
+
+
+    .bagContainer:nth-of-type(even) .bagItems {
+        margin: 0 auto 50px auto;
+        float: none;
     }
 }
 
@@ -295,7 +322,6 @@
         left: 1%;
     }
 }
-
 //Styles applying from Public Page
 // .bagContainer{
 //     width: 100%;

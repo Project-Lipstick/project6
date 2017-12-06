@@ -51,11 +51,9 @@
     padding: 0 20px 0 20px;
     border: 1px solid rgba(0, 0, 0, .1);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    background: white;
 }
 
-.publicMakeup:nth-of-type(even){
-    margin-right: none;
-}
 
 .publicMakeup img{
     width: 100%;
@@ -133,4 +131,101 @@
 .publicMakeup p{
     font-size: 1.4rem;
     margin-bottom: 10px;
+}
+
+/*Media Queries*/
+
+@media (max-width: 1140px) {
+    .profileImage{
+        width: 300px;
+        height: 300px;
+    }
+
+    .profileImage img{
+        height: 300px;
+        width: 300px;
+    }
+    .userOption1, .userOption2, .userOption3, .userOption4{
+        height: 300px;
+        width: 300px;
+    }
+
+    .publicMakeup{
+        width: calc(50% - 30px);
+        margin-right: 30px;
+    }
+
+    .publicMakeupContainer:nth-of-type(even) .publicMakeup{
+        margin-right: 0;
+        float: right;
+    }
+}
+
+@media (max-width: 900px){
+    .profileImage{
+        width: 250px;
+        height: 250px;
+    }
+
+    .profileImage img{
+        height: 250px;
+        width: 250px;
+    }
+    .userOption1, .userOption2, .userOption3, .userOption4{
+        height: 250px;
+        width: 250px;
+    }
+    .profileContent .bodyContent{
+        padding-right: 50px;
+    }
+}
+
+@media (max-width: 768px){
+    .imageContainer{
+        width: 100%;
+        position: relative;
+        top: auto; 
+        left: auto;
+        float: none;
+        transform: translate(0, 0);
+    }
+    .profileContent{
+        width: 85%;
+        margin-left: 15%;
+        position: relative;
+        z-index: 9999;
+    }
+
+    .profileImage{
+        width: 300px;
+        height: 300px;
+    }
+
+    .profileImage img{
+        height: 300px;
+        width: 300px;
+    }
+    .userOption1, .userOption2, .userOption3, .userOption4{
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 550px){
+    .publicMakeup{
+        width: 80%;
+        float: none;
+        margin: 0 auto 50px auto;
+    }
+
+    .profileContent{
+        width: 99%;
+        float: none;
+        margin: 50px auto 0 auto;
+    }
+
+    .publicMakeupContainer:nth-of-type(even) .publicMakeup{
+        margin: 50px auto 50px auto;
+        float: none;
+    }
 }
