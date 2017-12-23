@@ -76,6 +76,7 @@ class AdminView extends React.Component {
         dbRef.update({
             active: true,
         });
+
     }
 
     removePublic(e, key) {
@@ -122,10 +123,10 @@ class AdminView extends React.Component {
                                 <div className="userContent">
                                     <p><span className="bioTitle">Current Bio</span></p>
                                     <p className="bodyContent">{this.state.note}</p>
-                                    <a href={`${this.state.twitter}`}>
+                                    <a href={`http://www.twitter.com/${this.state.twitter}`} target="_blank">
                                         <i className="fa fa-twitter" aria-hidden="true"></i>
                                     </a>
-                                    <a href={`${this.state.instagram}`}>
+                                    <a href={`http://www.instagram.com/${this.state.instagram}`} target="_blank">
                                         <i className="fa fa-instagram" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -173,13 +174,15 @@ class AdminView extends React.Component {
                                             </div>
 
                                             <div className="bagRemoveAdd">
+                                            {item.active === false ? 
                                                 <div className="bagRemoveIcons addPublic">
                                                     <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i></a>
                                                 </div>
-
+                                            :
                                                 <div className="bagRemoveIcons removePublic">
                                                     <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i></a>
                                                 </div>
+                                            }
                                             </div>
                                         </div>
                                     </div>

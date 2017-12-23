@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
         const brand = this.state.searchByBrand;
         const type = this.state.searchByType;
         const searchQuery = [];
-        const apiUrl = 'http://makeup-api.herokuapp.com/api/v1/products.json?'
+        const apiUrl = 'https://makeup-api.herokuapp.com/api/v1/products.json?'
 
         if (brand === null) {
             searchQuery.push(`${apiUrl}product_type=${type}`);
@@ -79,7 +79,7 @@ class SearchForm extends React.Component {
 
 
     componentDidMount() {
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
         const deactiveItem = [];
         dbRef.once("value", (res) => {
             const data = res.val();

@@ -26,14 +26,12 @@ class PublicPage extends React.Component{
                 const value = data[key];
                 deactiveItem.push(value);
             }
-
             const activeItems = [];
             for (var i = 0; i < deactiveItem.length; i++) {
                 if (deactiveItem[i].active === true) {
                     activeItems.push(deactiveItem[i]);
                 } 
             }
-
             this.setState({
                 publicItems: activeItems,
             })
@@ -54,6 +52,7 @@ class PublicPage extends React.Component{
             })
         })
     }
+    
 render(){
     return(
         <section className="profileContainer">
@@ -67,10 +66,10 @@ render(){
             <div className="profileContent">
                 <h2 className="profileHeading">{this.state.name}</h2>
                 <p className="bodyContent">{this.state.note}</p>
-                <a href={`http://twitter.com/${this.state.twitter}`}>
+                <a href={`http://www.twitter.com/${this.state.twitter}`} target="_blank">
                     <i className="fa fa-twitter" aria-hidden="true"></i>
                 </a>
-                <a href={`http://instagram.com/${this.state.instagram}`}>
+                <a href={`http://www.instagram.com/${this.state.instagram}`} target="_blank">
                     <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
 
