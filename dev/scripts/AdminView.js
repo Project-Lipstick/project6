@@ -17,7 +17,6 @@ class AdminView extends React.Component {
             imageUrl: "",
         }
         this.removeItem = this.removeItem.bind(this);
-        this.toggleClass = this.toggleClass.bind(this);
         this.addPublic = this.addPublic.bind(this);
         this.removePublic = this.removePublic.bind(this);
         this.showColors = this.showColors.bind(this);
@@ -85,11 +84,6 @@ class AdminView extends React.Component {
         dbRef.update({
             active: false,
         });
-    }
-
-    toggleClass() {
-        const currentState = this.state.active;
-        this.setState({ active: !currentState })
     }
 
     toggleColor(e, colorValue) {
