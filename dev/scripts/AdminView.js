@@ -17,7 +17,6 @@ class AdminView extends React.Component {
             imageUrl: "",
         }
         this.removeItem = this.removeItem.bind(this);
-        this.toggleClass = this.toggleClass.bind(this);
         this.addPublic = this.addPublic.bind(this);
         this.removePublic = this.removePublic.bind(this);
         this.showColors = this.showColors.bind(this);
@@ -76,6 +75,20 @@ class AdminView extends React.Component {
         dbRef.update({
             active: true,
         });
+
+        const itemRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
+        const userItems = [];
+        itemRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                const value = data[key];
+                userItems.push(value);
+            }
+            this.setState({
+                currentItems: userItems,
+            })
+        })
+
     }
 
     removePublic(e, key) {
@@ -84,11 +97,19 @@ class AdminView extends React.Component {
         dbRef.update({
             active: false,
         });
-    }
 
-    toggleClass() {
-        const currentState = this.state.active;
-        this.setState({ active: !currentState })
+        const itemRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
+        const userItems = [];
+        itemRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                const value = data[key];
+                userItems.push(value);
+            }
+            this.setState({
+                currentItems: userItems,
+            })
+        })
     }
 
     toggleColor(e, colorValue) {
@@ -122,10 +143,10 @@ class AdminView extends React.Component {
                                 <div className="userContent">
                                     <p><span className="bioTitle">Current Bio</span></p>
                                     <p className="bodyContent">{this.state.note}</p>
-                                    <a href={`${this.state.twitter}`}>
+                                    <a href={`http://www.twitter.com/${this.state.twitter}`} target="_blank">
                                         <i className="fa fa-twitter" aria-hidden="true"></i>
                                     </a>
-                                    <a href={`${this.state.instagram}`}>
+                                    <a href={`http://www.instagram.com/${this.state.instagram}`} target="_blank">
                                         <i className="fa fa-instagram" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -173,13 +194,15 @@ class AdminView extends React.Component {
                                             </div>
 
                                             <div className="bagRemoveAdd">
+                                            {item.active === false ? 
                                                 <div className="bagRemoveIcons addPublic">
                                                     <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i></a>
                                                 </div>
-
+                                            :
                                                 <div className="bagRemoveIcons removePublic">
                                                     <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i></a>
                                                 </div>
+                                            }
                                             </div>
                                         </div>
                                     </div>

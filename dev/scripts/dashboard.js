@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
             <div>
                 {this.state.existingUser === false
                     ? <section>
-                        <Form userkey={this.props.userKey} />
+                      <Form userkey={this.props.userKey} />
                     </section>
                     : <TopNav userkey={this.props.userKey} />}
             </div>
