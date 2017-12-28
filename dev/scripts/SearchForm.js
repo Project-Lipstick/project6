@@ -19,6 +19,25 @@ class SearchForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.pageResults = this.pageResults.bind(this);
     }
+    
+    componentDidMount() {
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
+        const deactiveItem = [];
+        dbRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                const value = data[key];
+                deactiveItem.push(value);
+            }
+            const activeItems = [];
+            for (var i = 0; i < deactiveItem.length; i++) {
+                activeItems.push(deactiveItem[i].productId);
+            }
+            this.setState({
+                ids: activeItems
+            })
+        })
+    }
 
     handleBrand(e) {
         this.setState({
@@ -76,28 +95,7 @@ class SearchForm extends React.Component {
                 console.log(err)
             })
         }
-
-
-    componentDidMount() {
-        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
-        const deactiveItem = [];
-        dbRef.once("value", (res) => {
-            const data = res.val();
-            for (let key in data) {
-                const value = data[key];
-                deactiveItem.push(value);
-            }
-            const activeItems = [];
-            for (var i = 0; i < deactiveItem.length; i++) {
-                activeItems.push(deactiveItem[i].productId);
-            }
-            this.setState({
-                ids: activeItems
-            })
-        })
-    }
-        
-
+    
         pageResults(results) {
             let existingIds = this.state.ids
 
@@ -115,7 +113,7 @@ class SearchForm extends React.Component {
             <div>
                 <div className="searchPage clearfix">
                     <div className="inputWrapper">
-                        <form action="" onSubmit={this.handleSubmit} className="searchContainer clearfix">
+                        <form action="" onSubmit={this.handleSubmit} className="searchContainer clearfix" autoComplete="off">
                                 <div className="brandContainer selectedContainer">
                                     <div className="textWrapper">
                                         <h3>Brand</h3>
