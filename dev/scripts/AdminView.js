@@ -76,6 +76,19 @@ class AdminView extends React.Component {
             active: true,
         });
 
+        const itemRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
+        const userItems = [];
+        itemRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                const value = data[key];
+                userItems.push(value);
+            }
+            this.setState({
+                currentItems: userItems,
+            })
+        })
+
     }
 
     removePublic(e, key) {
@@ -84,6 +97,19 @@ class AdminView extends React.Component {
         dbRef.update({
             active: false,
         });
+
+        const itemRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
+        const userItems = [];
+        itemRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                const value = data[key];
+                userItems.push(value);
+            }
+            this.setState({
+                currentItems: userItems,
+            })
+        })
     }
 
     toggleColor(e, colorValue) {
