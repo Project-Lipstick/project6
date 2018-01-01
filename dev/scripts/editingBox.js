@@ -78,7 +78,7 @@ export default class EditingBox extends React.Component {
                     <div className="editInfoContainer">
                         <div>
                             <label htmlFor="note" className="visuallyhidden">Note</label>
-                            <input className="editInfoInputs" type="text" placeholder="Bio" defaultValue={this.state.note} onChange={this.handleChange} name="note" id="note" ref={ref => this.note = ref} />
+                            <textarea className="editInfoInputs" type="text" placeholder="Bio" defaultValue={this.state.note} onChange={this.handleChange} name="note" id="note" ref={ref => this.note = ref} />
                         </div>
                         <div>
                             <label htmlFor="instagram" className="visuallyhidden">Instagram</label>
@@ -93,13 +93,16 @@ export default class EditingBox extends React.Component {
                             <input type="file" id="userImage" name="userImage[]" defaultValue={this.state.imageUrl} onChange={this.onChange} ref={ref => this.imageUrl = ref} />
                         </div>
                     </div>
-                    <input type="submit" value="Done editing" />
+                    {this.props.userkey === "demo" ?
+                    <p className="demoWarning">Cannot Submit in Demo Mode</p>
+                    :
+                    <input type="submit" value="Done editing" />}
                 </form>
             )
         }
         return (
             <div className="editingBox">
-                <a onClick={() => this.setState({ editing: true })}>Edit Info</a>
+                <a onClick={() => this.setState({ editing: !this.state.editing })}>Edit Info</a>
                 {editingTemp}
             </div>
         )
