@@ -13,7 +13,8 @@ class Form extends React.Component {
             twitter: "",
             instagram: "",
             note: "",
-            imageUrl: ""
+            imageUrl: "",
+            uploading: false,
         }
         this.handleClick = this.handleClick.bind(this);       
     }
@@ -44,6 +45,10 @@ class Form extends React.Component {
     handleClick(e) {
         e.preventDefault();
 
+        this.setState({
+            uploading: true,
+        });
+
         const newTwitter = this.twitter.value;
         const newInstagram = this.instagram.value;
         const newNote = this.note.value
@@ -69,6 +74,8 @@ class Form extends React.Component {
     render(){
         
         return(
+            <div>
+            {this.state.uploading === false ?
             <section className="formSection">
                 <div className="formInputWrapper">
                     <div className="formBox">
@@ -95,6 +102,17 @@ class Form extends React.Component {
                     </div>
                 </div> 
             </section>
+            : 
+            <section className="profileCreation">
+                <div className="spinner">
+                    <div className="bounce1"></div>
+                    <div className="bounce2"></div>
+                    <div className="bounce3"></div>
+                    <h3>Creating Your Profile</h3>
+                </div>
+            </section>
+            }
+            </div>
         )
     }
 }
