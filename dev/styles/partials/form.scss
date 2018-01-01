@@ -3,7 +3,6 @@
     height: 100vh;
     background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
 }
-
 .formInputWrapper{
     position: absolute;
     top: 35%;
@@ -149,6 +148,10 @@
 @media (max-width: 1024px) {
     .formInputWrapper {
         left: 10%;
+        width: 100%;
+    }
+    .formBox{
+        width: 80%;
     }
 } 
 
@@ -156,35 +159,31 @@
     .formInputWrapper {
         left: 8.5%;
     }
-    .formInput{
-        border: solid 2px rgba(235, 167, 141, 0.5);
-        
-    }
-    .formBox{
-        padding: 0 3% 0 18%;
-        width: 600px;
-
-    }
-    .inputBox{
-        padding-bottom: 20px;
-        width: 90%;
-    }
     .inputBox textarea{
         width: 90%; 
      }
     .inputBox input{
         width: 90%;
     }
-    .instagramLink{
-        padding-bottom: 50px;
-    }
 } 
 
 @media (max-width: 480px) {
     .formInputWrapper {
-        left: 10%;
+        width: 90%;
     }
-    
+    .formBox{
+        width: 90%;
+
+        h1 {
+            text-align: center;
+        }
+    }
+    .inputBox textarea{
+        width: 100%; 
+     }
+    .inputBox input{
+        width: 100%;
+    }
 } 
 
 @media (max-width: 320px) {
@@ -193,16 +192,6 @@
     }
     .formBox{
         padding: 0 10%;
-    }
-    .fileInput{
-        width: 85%;
-    }
-    .inputBox{
-        padding-bottom: 20px;
-        width: 90%;
-    }
-    .inputBox input{
-        width: 90%;
     }
 } 
 
