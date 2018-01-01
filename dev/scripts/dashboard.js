@@ -24,7 +24,6 @@ class Dashboard extends React.Component {
         
         dbRef.on("value", (res) => {
             const data = res.val();
-            console.log(data.existingUser);
             const userStanding = data.existingUser;
             if(data.existingUser === true){
                 this.setState({
