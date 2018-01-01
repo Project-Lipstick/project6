@@ -71,14 +71,22 @@ class TopNav extends React.Component {
 
     logout(e) {
         e.preventDefault();
-        firebase.auth().signOut()
-            .then((user) => {
+        if (this.props.userkey === "demo") {
+            this.setState({
+                loggedIn: false,
+                userKey: this.props.userkey,
+                userName: "",
             });
-        this.setState({
-            loggedIn: false,
-            userKey: this.props.userkey,
-            userName: "",
-        })
+        } else {
+            firebase.auth().signOut()
+                .then((user) => {
+                });
+            this.setState({
+                loggedIn: false,
+                userKey: this.props.userkey,
+                userName: "",
+            });
+        }
     }
 
     render() {

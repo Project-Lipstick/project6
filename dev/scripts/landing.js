@@ -17,6 +17,7 @@ class Landing extends React.Component {
         }
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
+        this.initDemo = this.initDemo.bind(this);
     }
 
     componentDidMount() {
@@ -69,6 +70,15 @@ class Landing extends React.Component {
             userName: "",
         })
     }
+
+    initDemo(e) {
+        e.preventDefault();
+        this.setState({
+            loggedIn: true,
+            userKey: "demo",
+            userName: "Demo Mode",
+        });
+    }
     render() {
         return (
             <div>
@@ -84,6 +94,7 @@ class Landing extends React.Component {
                                     <a href="" onClick={this.login}>Sign In</a>
                                 </div>
                             </div>
+                            <a href="" className="demoMode" onClick={this.initDemo}>Demo Mode</a>
                         </section>
                         : <Dashboard
                             userKey={this.state.userKey}

@@ -55,6 +55,21 @@
     width: 200px;
 }
 
+.demoMode {
+    position: absolute;
+    top: 64.2%;
+    left: 67.8%;
+    transform: translate(-64.2%, -67.8%);
+    color: #eba78d;
+    text-transform: uppercase;
+    opacity: .75;
+    transition: all .25s ease;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
 .landingPageSideImage {
     height: 100%;
     width: 33.33%;
@@ -86,6 +101,12 @@
     .landingPageSideImage {
         width: 40%;
     }
+
+    .demoMode {
+        top: 64.2%;
+        left: 72.9%;
+        transform: translate(-64.2%, -72.9%);
+    }
 }
 
 @media (max-width: 768px) {
@@ -105,6 +126,12 @@
 
     .landingPageSideImage img {
         margin-left: 0;
+    }
+
+    .demoMode {
+        top: 64.2%;
+        left: 51.5%;
+        transform: translate(-64.2%, -51.5%);
     }
 }
 
