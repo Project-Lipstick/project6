@@ -81,13 +81,9 @@ class Form extends React.Component {
                     <div className="formBox">
                         <h1 className="formTitle">Create Your Profile</h1>
                         <form onSubmit={this.handleClick}>
-                            <div className="userImage inputBox">
-                                <input className="formInput fileInput"
-                                type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref}/>
-                            </div>
                             <div className="note inputBox">
                                 <label htmlFor="note">Describe Yourself</label>
-                                <textarea className="formInput" name="note" id="note" maxLength="280" ref={ref => this.note = ref}></textarea>
+                                <textarea className="formInput" name="note" id="note" placeholder="Max length 280 char." maxLength="280" ref={ref => this.note = ref}></textarea>
                             </div>
                             <div className="twitterLink inputBox">
                                 <label htmlFor="twitter">Twitter Link</label>
@@ -96,6 +92,11 @@ class Form extends React.Component {
                              <div className="instagramLink inputBox">
                                 <label htmlFor="instagram">Instagram Link</label>
                                  <input placeholder="@yourinstagram"className="formInput" type="text" name="instagram" id="instagram" ref={ref => this.instagram = ref} />
+                            </div>
+                            <div className="userImage inputBox">
+                                <label htmlFor="userImage">Profile Image</label>
+                                <input className="formInput fileInput"
+                                    type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref} />
                             </div>
                             <input className="formSubmitButton" type="submit" value="Add" />
                         </form> 

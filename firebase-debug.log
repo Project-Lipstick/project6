@@ -1,0 +1,31 @@
+[debug] [2018-01-01T18:46:03.642Z] ----------------------------------------------------------------------
+[debug] [2018-01-01T18:46:03.645Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-01-01T18:46:03.645Z] CLI Version:   3.15.4
+[debug] [2018-01-01T18:46:03.645Z] Platform:      darwin
+[debug] [2018-01-01T18:46:03.645Z] Node Version:  v8.9.1
+[debug] [2018-01-01T18:46:03.646Z] Time:          Mon Jan 01 2018 12:46:03 GMT-0600 (CST)
+[debug] [2018-01-01T18:46:03.646Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-01T18:46:03.663Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-01T18:46:03.663Z] > authorizing via signed-in user
+[debug] [2018-01-01T18:46:03.665Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-01T18:46:03.665Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/GvY3Nv8MfyM7mkkJ8zAa8U2yIxfb5YKcj3CPxA76dRE',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Jan 01 2018 12:46:03 GMT-0600 (CST)
+[debug] [2018-01-01T18:46:04.054Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-01T18:46:04.068Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/makeup-fun  
+ Mon Jan 01 2018 12:46:04 GMT-0600 (CST)
+[debug] [2018-01-01T18:46:04.880Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-01T18:46:04.881Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/makeup-fun/tokens  
+ Mon Jan 01 2018 12:46:04 GMT-0600 (CST)
+[debug] [2018-01-01T18:46:05.499Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'makeup-fun'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing . directory for upload...
+[debug] [2018-01-01T18:46:06.987Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/makeup-fun/uploads/-L1n1saf-oEOsNEi2te2?fileCount=1115&message=  
+ Mon Jan 01 2018 12:46:06 GMT-0600 (CST)
