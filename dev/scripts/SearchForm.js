@@ -12,7 +12,8 @@ class SearchForm extends React.Component {
             searchByBrand: "",
             searchByType: "",
             results: [],
-            ids: []
+            ids: [],
+            searching: false,
         }
         this.handleBrand = this.handleBrand.bind(this);
         this.handleType = this.handleType.bind(this);
@@ -54,10 +55,14 @@ class SearchForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        this.setState({
+            searching: true,
+        });
+
         const brand = this.state.searchByBrand;
         const type = this.state.searchByType;
         const searchQuery = [];
-        const apiUrl = 'https://makeup-api.herokuapp.com/api/v1/products.json?'
+        const apiUrl = 'https://makeup-api.herokuapp.com/api/v1/products.json?';
 
         if (brand === null) {
             searchQuery.push(`${apiUrl}product_type=${type}`);
@@ -90,7 +95,10 @@ class SearchForm extends React.Component {
             .then((res) => {
                 const results = res.data
                 test.push(results);
-                this.pageResults(results)
+                this.pageResults(results);
+                this.setState({
+                    searching: false,
+                })
             }).catch((err) => {
                 console.log(err)
             })
@@ -132,11 +140,19 @@ class SearchForm extends React.Component {
                         </form>
                     </div>
                 </div>
+                {this.state.searching === true ? 
+                <div className="spinner">
+                    <div className="bounce1"></div>
+                    <div className="bounce2"></div>
+                    <div className="bounce3"></div>
+                    <h3>Searching</h3>
+                </div>
+                :
                 <div className="returnedData">
                     {this.state.results.map((brand, index) => {
                         return <MakeUpProducts data={brand} key={index} userkey={this.props.userkey} />
                     })}
-                </div>
+                </div>}
             </div>
         )
     }

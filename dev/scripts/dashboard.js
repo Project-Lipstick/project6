@@ -67,26 +67,17 @@ class TopNav extends React.Component {
     constructor() {
         super();
         this.logout = this.logout.bind(this);
+        this.endDemo = this.endDemo.bind(this);
     }
 
     logout(e) {
         e.preventDefault();
-        if (this.props.userkey === "demo") {
-            this.setState({
-                loggedIn: false,
-                userKey: this.props.userkey,
-                userName: "",
-            });
-        } else {
-            firebase.auth().signOut()
-                .then((user) => {
-                });
-            this.setState({
-                loggedIn: false,
-                userKey: this.props.userkey,
-                userName: "",
-            });
-        }
+        firebase.auth().signOut();
+    }
+
+    endDemo(e) {
+        e.preventDefault();
+        console.log("end demo");
     }
 
     render() {
@@ -98,7 +89,13 @@ class TopNav extends React.Component {
                         <li><Link to={'/'} className="navLink" >Dashboard</Link></li>
                         <li><Link to={'/search'} className="navLink"  >Search</Link></li>
                         <li><Link to={`/public/${this.props.userkey}`} className="navLink">Public</Link></li>
-                        <li onClick={this.logout} className="navLink" >Logout</li>
+                        {this.props.userkey === "demo" ?
+                        <li className="navLink">
+                            <a href="https://makeup-fun.firebaseapp.com/">Logout</a>
+                        </li>
+                        : 
+                        <li onClick={this.logout} className="navLink">Logout</li>
+                        }
                     </ul>
                     <Switch className="switch">
                         <Route exact path="/" render={props => <AdminView {...props} userkey={this.props.userkey}/>}/>
