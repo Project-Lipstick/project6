@@ -81,8 +81,9 @@
     position: relative;
 }
 
-.spinner {
-    width: 200px;
+.spinner, 
+.invalidWarning {
+    width: 400px;
     text-align: center;
     position: absolute;
     top: 50%;
