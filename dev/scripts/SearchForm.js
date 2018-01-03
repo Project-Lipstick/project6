@@ -14,6 +14,7 @@ class SearchForm extends React.Component {
             results: [],
             ids: [],
             searching: false,
+            invalid: false,
         }
         this.handleBrand = this.handleBrand.bind(this);
         this.handleType = this.handleType.bind(this);
@@ -57,6 +58,7 @@ class SearchForm extends React.Component {
 
         this.setState({
             searching: true,
+            invalid: false,
         });
 
         const brand = this.state.searchByBrand;
@@ -98,7 +100,12 @@ class SearchForm extends React.Component {
                 this.pageResults(results);
                 this.setState({
                     searching: false,
-                })
+                });
+                if(results.length === 0) {
+                    this.setState({
+                        invalid: true,
+                    });
+                };
             }).catch((err) => {
                 console.log(err)
             })
@@ -153,6 +160,11 @@ class SearchForm extends React.Component {
                         return <MakeUpProducts data={brand} key={index} userkey={this.props.userkey} />
                     })}
                 </div>}
+                {this.state.invalid === true ? <div>
+                    <div className="invalidWarning">
+                        <h2>Invalid search, please try again.</h2>
+                    </div>
+                </div> : null}
             </div>
         )
     }

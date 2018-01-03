@@ -9,20 +9,11 @@
     top: 35%;
     left: 25%;
     transform: translate(0, -50%);
-
-    // @include tablet {
-    //     left: 6%;
-    // }
 }
 
 .searchContainer{
     width: 750px;
-    // box-shadow: 10px 10px 0px rgb(80, 63, 63);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-
-    // @include tablet {
-    //     width: 762px;
-    // }
 }
 
 .searchContainer .clearfix:after {
@@ -42,7 +33,6 @@
 
 .brandContainer:hover{
     background: rgba(235, 167, 141, .17);
-    // transition: .35s;
 }
 
 .typeContainer:hover {
@@ -96,9 +86,7 @@
     position: absolute;
     right: 15px;
     top: -17px;
-    // background: white;
     padding: 1%;
-    // box-shadow: 0 2.5px 10px rgba(0, 0, 0, .05);
 }
 .bagAdd .fa-plus-square-o:hover{
     color: #eba78d;
@@ -322,47 +310,3 @@
         left: 1%;
     }
 }
-//Styles applying from Public Page
-// .bagContainer{
-//     width: 100%;
-// }
-
-// .bagItems{
-//     float: left;  
-//     width: calc(25% - 20px);
-//     margin-bottom: 50px;
-//     margin-right: 20px;
-//     height: 400px;
-//     position: relative;
-// }
-
-
-// .bagItems img{
-//     width: 100%;
-//     height: 300px;
-//     display: block;
-// }
-
-// .bagItems p{
-//     font-size: 1.4rem;
-// }
-
-// .bagItems a{
-//     margin-right: 10px;
-//     color: black;
-// }
-
-// .bagItems i{
-//     margin-right: 3px;
-// }
-
-
-// .bagLinks{
-//     position: absolute;
-//     bottom: 0;
-// }
-
-// .bagTitle{
-//     font-size: 3rem;
-//     margin: 30px 0 30px 0;
-// }
