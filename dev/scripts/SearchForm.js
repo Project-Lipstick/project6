@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 class SearchForm extends React.Component {
     constructor() {
         super();
-
         this.state = {
             searchByBrand: "",
             searchByType: "",
