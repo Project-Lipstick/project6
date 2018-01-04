@@ -50,13 +50,13 @@ class Discover extends React.Component {
             });
         }
 
-        const searchQuery = e.target.value;
+        const searchQuery = e.target.value.toLowerCase();
         const userList = this.state.userList;
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
         const searchList = userList.filter(function(user){
-            return user.name.includes(capitalizeFirstLetter(searchQuery));
+            return user.search.includes(searchQuery);
         });
         this.setState({
             searchList,
@@ -66,10 +66,10 @@ class Discover extends React.Component {
     
     render() {
         return (
-                <section>
-                    <h2>Discover</h2>
+                <section className="discoverContainer">
+                    <h2 className="profileHeading">Discover Users</h2>
                     <form name="userSearch">
-                        <input type="text" onChange={this.searchField}/>
+                        <input type="text" placeholder="Search" onChange={this.searchField}/>
                     </form>
                     
                     {this.state.searching === false ?
@@ -103,7 +103,6 @@ class Discover extends React.Component {
 class UserCard extends React.Component {
     render(){
         return(
-            
             <div className="userCard clearfix">
                 <img src={this.props.image} alt="" />
                 <h3>{this.props.name}</h3>

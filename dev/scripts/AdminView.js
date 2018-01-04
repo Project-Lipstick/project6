@@ -131,7 +131,7 @@ class AdminView extends React.Component {
     render() {
         return (
             <section className="adminContainer">
-                <h2 className="sectionHeading">Dashboard</h2>
+                <h2 className="profileHeading">Dashboard</h2>
                 <div>
                     <div>
                         <div className="userDetails clearfix">

@@ -51,11 +51,14 @@ class Landing extends React.Component {
                 const userId = firebase.auth().currentUser.uid;
 
                 const dbRef = firebase.database().ref(`${userId}/`);
+                
+                // const search = data.user.displayName.toLowerCase();
 
                 dbRef.update({
                     name: `${data.user.displayName}`,
                     email: `${data.user.email}`,
                     id: userId,
+                    search: `${data.user.displayName}`.toLowerCase(),
                 });
             });
         }
