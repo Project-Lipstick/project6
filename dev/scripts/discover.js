@@ -10,7 +10,11 @@ class Discover extends React.Component {
         super();
         this.state = {
             userList: [],
+            searchList: [],
+            searching: false,
+            searchQuery: '',
         }
+        this.searchField = this.searchField.bind(this);
     }
 
     componentDidMount() {
@@ -34,11 +38,41 @@ class Discover extends React.Component {
         });
     }
 
+    searchField(e) {
+        e.preventDefault();
+        if (e.target.value !== '') {
+            this.setState({
+                searching: true,
+            });
+        } else {
+            this.setState({
+                searching: false,
+            });
+        }
+
+        const searchQuery = e.target.value;
+        const userList = this.state.userList;
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+        const searchList = userList.filter(function(user){
+            return user.name.includes(capitalizeFirstLetter(searchQuery));
+        });
+        this.setState({
+            searchList,
+        });
+    }
+
     
     render() {
         return (
                 <section>
                     <h2>Discover</h2>
+                    <form name="userSearch">
+                        <input type="text" onChange={this.searchField}/>
+                    </form>
+                    
+                    {this.state.searching === false ?
                     <div className="clearfix">
                         {this.state.userList.map((userList) => {
                             return <UserCard
@@ -49,6 +83,18 @@ class Discover extends React.Component {
                             />
                         })}
                     </div>
+                    :
+                    <div className="clearfix">
+                        {this.state.searchList.map((searchList) => {
+                        return <UserCard
+                            key={searchList.id}
+                            userUrl={searchList.id}
+                            name={searchList.name}
+                            image={searchList.imageUrl}
+                        />
+                        })}
+                    </div>
+                    }
                 </section>
         )
     }
@@ -61,7 +107,7 @@ class UserCard extends React.Component {
             <div className="userCard clearfix">
                 <img src={this.props.image} alt="" />
                 <h3>{this.props.name}</h3>
-                <Link to={`/discover/${this.props.userUrl}`}>View Profile</ Link>
+                {/* <Link to={`/discover/${this.props.userUrl}`}>View Profile</ Link> */}
             </div>
             
         )

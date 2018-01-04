@@ -90,7 +90,7 @@ class TopNav extends React.Component {
                     <ul className="nav clearfix">
                         <li><Link to={'/'} className="navLink" >Dashboard</Link></li>
                         <li><Link to={'/search'} className="navLink"  >Search</Link></li>
-                        {/* <li><Link to={'/discover'} className="navLink"  >Discover</Link></li> */}
+                        <li><Link to={'/discover'} className="navLink"  >Discover</Link></li>
                         <li><Link to={`/public/${this.props.userkey}`} className="navLink">Public</Link></li>
                         {this.props.userkey === "demo" ?
                         <li className="navLink">
