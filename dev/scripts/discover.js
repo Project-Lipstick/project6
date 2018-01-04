@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import firebase from './firebase';
+import PublicPage from './publicpage';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class Discover extends React.Component {
@@ -36,17 +37,19 @@ class Discover extends React.Component {
     
     render() {
         return (
-            <section className="discoverContainer">
-                <h2>Discover</h2>
-                <div className="wrapper">
-                    {this.state.userList.map((userList) => {
-                        return <UserCard
-                            key={userList.name}
-                            name={userList.name}
-                        />
-                    })}
-                </div>
-            </section>
+                <section>
+                    <h2>Discover</h2>
+                    <div className="clearfix">
+                        {this.state.userList.map((userList) => {
+                            return <UserCard
+                                key={userList.id}
+                                userUrl={userList.id}
+                                name={userList.name}
+                                image={userList.imageUrl}
+                            />
+                        })}
+                    </div>
+                </section>
         )
     }
 }
@@ -54,9 +57,13 @@ class Discover extends React.Component {
 class UserCard extends React.Component {
     render(){
         return(
-            <div>
-                
+            
+            <div className="userCard clearfix">
+                <img src={this.props.image} alt="" />
+                <h3>{this.props.name}</h3>
+                <Link to={`/discover/${this.props.userUrl}`}>View Profile</ Link>
             </div>
+            
         )
     }
 }

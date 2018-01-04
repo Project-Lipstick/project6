@@ -55,6 +55,7 @@ class Landing extends React.Component {
                 dbRef.update({
                     name: `${data.user.displayName}`,
                     email: `${data.user.email}`,
+                    id: userId,
                 });
             });
         }
