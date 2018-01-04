@@ -3,3 +3,35 @@
     width: 100vw;
     height: 100vw;
 }
+
+.userCard {
+    width: calc(25% - 50px);
+    float: left;
+    margin-bottom: 65px;
+    margin-right: 66.5px;
+    height: 350px;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 20px 20px 0 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+    img {
+        width: 100%;
+        height: 250px;
+        display: block;
+        object-fit: cover;
+        margin: 0 0 20px 0;
+    }
+
+    h3 {
+        display: inline-block;
+    }
+
+    a {
+        float: right;
+    }
+}
+
+.userCard:nth-of-type(4) {
+    margin-right: 0;
+}

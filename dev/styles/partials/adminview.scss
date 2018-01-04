@@ -168,6 +168,11 @@
 .editingBox a, .editColorTitle{
     font-size: 2rem;
     cursor: pointer;
+    transition: .25s ease;
+
+    &:hover {
+        color: #eba78d;
+    }
 }
 
 .color1{
