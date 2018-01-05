@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import firebase from './firebase';
 import PublicPage from './publicpage';
+import DiscoverProfile from './discoverProfile';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class Discover extends React.Component {
@@ -18,6 +19,7 @@ class Discover extends React.Component {
     }
 
     componentDidMount() {
+        console.log("discover did mount");
         const dbRef = firebase.database().ref();
 
         dbRef.on('value', (res) => {
@@ -66,6 +68,7 @@ class Discover extends React.Component {
     
     render() {
         return (
+            <Router>
                 <section className="discoverContainer">
                     <h2 className="profileHeading">Discover Users</h2>
                     <form name="userSearch">
@@ -75,12 +78,14 @@ class Discover extends React.Component {
                     {this.state.searching === false ?
                     <div className="clearfix">
                         {this.state.userList.map((userList) => {
-                            return <UserCard
-                                key={userList.id}
-                                userUrl={userList.id}
-                                name={userList.name}
-                                image={userList.imageUrl}
-                            />
+                            return (
+                                <Link to={`/discover/${userList.id}`} key={userList.name} >
+                                    <div className="userCard clearfix" key={userList.id}>
+                                        <img src={userList.imageUrl} alt="" />
+                                        <h3>{userList.name}</h3>
+                                    </div>
+                                </Link>
+                            )
                         })}
                     </div>
                     :
@@ -96,21 +101,24 @@ class Discover extends React.Component {
                     </div>
                     }
                 </section>
+            </Router>
         )
     }
 }
 
-class UserCard extends React.Component {
-    render(){
-        return(
-            <div className="userCard clearfix">
-                <img src={this.props.image} alt="" />
-                <h3>{this.props.name}</h3>
-                {/* <Link to={`/discover/${this.props.userUrl}`}>View Profile</ Link> */}
-            </div>
-            
-        )
-    }
-}
+// class UserCard extends React.Component {
+//     render(){
+//         return(
+//             <div className="userCard clearfix">
+//                 <img src={this.props.image} alt="" />
+//                 <h3>{this.props.name}</h3>
+//                 <Link to={`/discover/${this.props.userUrl}`}>View Profile</ Link>
+//                 <Switch>
+//                     <Route path={`/discover/${this.props.userUrl}`} render={props => <DiscoverProfile {...props} userUrl={this.props.userUrl} />} />
+//                 </Switch>
+//             </div>
+//         )
+//     }
+// }
 
 export default Discover;
