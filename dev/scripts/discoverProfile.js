@@ -18,6 +18,7 @@ class DiscoverProfile extends React.Component {
     }
 
     componentDidMount() {
+        console.log("profile did mount");
         const dbRef = firebase.database().ref(`${this.props.userUrl}`).child("selections");
 
         const deactiveItem = [];
