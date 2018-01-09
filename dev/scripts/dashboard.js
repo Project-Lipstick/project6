@@ -90,7 +90,6 @@ class TopNav extends React.Component {
                     <ul className="nav clearfix">
                         <li><Link to={'/'} className="navLink" >Dashboard</Link></li>
                         <li><Link to={'/search'} className="navLink"  >Search</Link></li>
-                        <li><Link to={'/discover'} className="navLink"  >Discover</Link></li>
                         <li><Link to={`/public/${this.props.userkey}`} className="navLink">Public</Link></li>
                         {this.props.userkey === "demo" ?
                         <li className="navLink">
@@ -105,7 +104,6 @@ class TopNav extends React.Component {
                         <Route exact path="/discover" render={props => <Discover {...props} userkey={this.props.userkey}/>}/>
                         <Route exact path="/search" render={props => <SearchForm {...props} userkey={this.props.userkey}/>}/>
                         <Route exact path={`/public/${this.props.userkey}`} render={props => <PublicPage {...props} userkey={this.props.userkey}/>}/>
-                        <Route exact path={`/discover/${this.props.userUrl}`} render={props => <DiscoverProfile {...props} userUrl={this.props.userUrl}/>}/>
                     </Switch>
                 </div>
             </Router>
